@@ -1,4 +1,4 @@
-import {createS3Client} from "./awsUtils";
+import {createS3Client} from "../utils/awsUtils";
 
 
 const ATTACHMENT_S3_BUCKET = process.env.ATTACHMENT_S3_BUCKET

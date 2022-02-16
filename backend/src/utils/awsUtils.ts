@@ -3,7 +3,7 @@ import 'source-map-support/register'
 import * as AWS from "aws-sdk";
 import * as AWSXRay from 'aws-xray-sdk'
 import {DocumentClient} from "aws-sdk/clients/dynamodb";
-import {createLogger} from "../utils/logger";
+import {createLogger} from "./logger";
 
 
 const XAWS = AWSXRay.captureAWS(AWS)

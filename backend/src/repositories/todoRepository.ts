@@ -2,13 +2,13 @@ import {DocumentClient} from 'aws-sdk/clients/dynamodb'
 import {TodoItem} from '../models/TodoItem'
 import {TodoUpdate} from '../models/TodoUpdate';
 import {createLogger} from '../utils/logger'
-import {createDynamoDBClient} from "./awsUtils";
+import {createDynamoDBClient} from "../utils/awsUtils";
 
 const logger = createLogger('TodosAccess')
 
 const TODOS_TABLE = process.env.TODOS_TABLE
 
-export class TodosAccess {
+export class TodoRepository {
   constructor(
     private readonly client: DocumentClient = createDynamoDBClient(true)
   ) {

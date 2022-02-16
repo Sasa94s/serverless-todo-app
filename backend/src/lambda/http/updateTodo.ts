@@ -2,9 +2,9 @@ import 'source-map-support/register'
 
 import {APIGatewayProxyEvent, APIGatewayProxyResult} from 'aws-lambda'
 
+import {parseUserId} from "../../auth/utils";
 import {UpdateTodoRequest} from '../../requests/UpdateTodoRequest'
-import {updateTodo} from '../../helpers/todos'
-import {getUserId} from '../utils'
+import {updateTodo} from '../../services/todos'
 import {createLogger} from "../../utils/logger";
 
 const logger = createLogger('updateTodo')
@@ -13,7 +13,7 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
   logger.info("Event Request", {request: event?.body})
   const todoId = event.pathParameters.todoId
   const request: UpdateTodoRequest = JSON.parse(event.body)
-  const userId = getUserId(event)
+  const userId = parseUserId(event.headers.Authorization)
 
   await updateTodo(todoId, request, userId)
 

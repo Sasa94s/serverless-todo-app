@@ -1,14 +1,14 @@
-import {TodosAccess} from './todosAccess'
-import {TodosStorage} from "./todosStorage";
-import {AttachmentUtils} from './attachmentUtils';
+import {TodoRepository} from '../repositories/todoRepository'
+import {TodosStorage} from "../helpers/todosStorage";
+import {AttachmentRepository} from '../repositories/attachmentRepository';
 import {CreateTodoRequest} from '../requests/CreateTodoRequest'
 import {UpdateTodoRequest} from '../requests/UpdateTodoRequest'
 import {TodoItem} from '../models/TodoItem'
 import * as uuid from 'uuid'
 
-const todoAccess = new TodosAccess()
+const todoAccess = new TodoRepository()
 const todoStorage = new TodosStorage()
-const attachmentUtils = new AttachmentUtils()
+const attachmentUtils = new AttachmentRepository()
 
 export async function getTodosForUser(userId: string) {
   return await todoAccess.getTodoItems(userId);
