@@ -4,7 +4,7 @@ A simple TODO application using AWS Lambda and Serverless framework.
 
 This application allows creating/removing/updating/fetching TODO items. Each TODO item can optionally have an attachment image. Each user only has access to TODO items that he/she has created.
 
-**ServiceEndpoint**: https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev
+**ServiceEndpoint**: https://y4w9udhkvi.execute-api.us-east-1.amazonaws.com/dev
 
 **Pages screenshots** can be found at [PAGES.md](./PAGES.md)
 
@@ -17,7 +17,7 @@ This application allows creating/removing/updating/fetching TODO items. Each TOD
    * Create a <a href="https://dashboard.serverless.com/" target="_blank">Serverless account</a> user
    * Install the Serverless Framework’s CLI  (up to VERSION=2.21.1). Refer to the <a href="https://www.serverless.com/framework/docs/getting-started/" target="_blank">official documentation</a> for more help.
    ```bash
-   npm install -g serverless@2.21.1
+   npm install -g serverless@3.2.1
    serverless --version
    ```
    * Login and configure serverless 
@@ -26,7 +26,7 @@ This application allows creating/removing/updating/fetching TODO items. Each TOD
    ```
    * Deploy Changes
   ```bash
-  sls deploy --aws-profile default -v
+  sls deploy --aws-profile default --verbose
   ```
 
 ## Getting Started
@@ -38,7 +38,7 @@ To deploy an application run the following commands:
 ```
 cd backend
 npm install
-sls deploy -v
+sls deploy --verbose
 ```
 
 ### Frontend
@@ -60,7 +60,7 @@ You can use the Postman collection that contains sample request/response, as an 
 Postman collection: [Serverless-TODO-App.postman_collection.json](./Serverless-TODO-App.postman_collection.json)
 
 ### `GET` - GetTodos
-`GET` - https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos
+`GET` - https://y4w9udhkvi.execute-api.us-east-1.amazonaws.com/dev/todos
 
 <details>
   <summary>Expand to show sample Request/Response</summary>
@@ -68,7 +68,7 @@ Postman collection: [Serverless-TODO-App.postman_collection.json](./Serverless-T
 
 Request:
 ```shell
-curl --location --request GET 'https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos' \
+curl --location --request GET 'https://y4w9udhkvi.execute-api.us-east-1.amazonaws.com/dev/todos' \
 --header 'Authorization: Bearer TOKEN'
 ```
 Response:
@@ -90,7 +90,7 @@ Response:
 </details>
 
 ### `POST` - CreateTodo
-`POST` - https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos
+`POST` - https://y4w9udhkvi.execute-api.us-east-1.amazonaws.com/dev/todos
 
 <details>
   <summary>Expand to show sample Request/Response</summary>
@@ -98,7 +98,7 @@ Response:
 
 Request:
 ```shell
-curl --location --request POST 'https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos' \
+curl --location --request POST 'https://y4w9udhkvi.execute-api.us-east-1.amazonaws.com/dev/todos' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer TOKEN' \
 --data-raw '{
@@ -123,14 +123,14 @@ Response:
 </details>
 
 ### `PATCH` - UpdateTodo
-`PATCH` - https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos/{todoId}
+`PATCH` - https://y4w9udhkvi.execute-api.us-east-1.amazonaws.com/dev/todos/{todoId}
 
 <details>
   <summary>Expand to show sample Request/Response</summary>
 
 Request:
 ```shell
-curl --location --request PATCH 'https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos/5230ab06-4ebc-4c58-8df2-86e365dc96f0' \
+curl --location --request PATCH 'https://y4w9udhkvi.execute-api.us-east-1.amazonaws.com/dev/todos/5230ab06-4ebc-4c58-8df2-86e365dc96f0' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer TOKEN' \
 --data-raw '{
@@ -146,14 +146,14 @@ Response:
 </details>
 
 ### `DELETE` - DeleteTodo
-`DELETE` - https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos/{todoId}
+`DELETE` - https://y4w9udhkvi.execute-api.us-east-1.amazonaws.com/dev/todos/{todoId}
 
 <details>
   <summary>Expand to show sample Request/Response</summary>
 
 Request:
 ```shell
-curl --location --request DELETE 'https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos/9962b406-a756-4e35-a537-037df04f2d80' \
+curl --location --request DELETE 'https://y4w9udhkvi.execute-api.us-east-1.amazonaws.com/dev/todos/9962b406-a756-4e35-a537-037df04f2d80' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer TOKEN' \
 --data-raw ''
@@ -165,14 +165,14 @@ Response:
 </details>
 
 ### `POST` - GetAttachmentUrl
-`POST` - https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos/{todoId}/attachment
+`POST` - https://y4w9udhkvi.execute-api.us-east-1.amazonaws.com/dev/todos/{todoId}/attachment
 
 <details>
   <summary>Expand to show sample Request/Response</summary>
 
 Request:
 ```shell
-curl --location --request POST 'https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos/5230ab06-4ebc-4c58-8df2-86e365dc96f0/attachment' \
+curl --location --request POST 'https://y4w9udhkvi.execute-api.us-east-1.amazonaws.com/dev/todos/5230ab06-4ebc-4c58-8df2-86e365dc96f0/attachment' \
 --header 'Authorization: Bearer TOKEN' \
 --data-raw ''
 ```
