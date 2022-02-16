@@ -4,7 +4,9 @@ A simple TODO application using AWS Lambda and Serverless framework.
 
 This application allows creating/removing/updating/fetching TODO items. Each TODO item can optionally have an attachment image. Each user only has access to TODO items that he/she has created.
 
-Pages screenshots can be found at [PAGES.md](./PAGES.md)
+**ServiceEndpoint**: https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev
+
+**Pages screenshots** can be found at [PAGES.md](./PAGES.md)
 
 ## Prerequisites
 
@@ -58,6 +60,8 @@ You can use the Postman collection that contains sample request/response, as an 
 Postman collection: [Serverless-TODO-App.postman_collection.json](./Serverless-TODO-App.postman_collection.json)
 
 ### `GET` - GetTodos
+`GET` - https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos
+
 <details>
   <summary>Expand to show sample Request/Response</summary>
 
@@ -86,6 +90,8 @@ Response:
 </details>
 
 ### `POST` - CreateTodo
+`POST` - https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos
+
 <details>
   <summary>Expand to show sample Request/Response</summary>
 
@@ -117,6 +123,8 @@ Response:
 </details>
 
 ### `PATCH` - UpdateTodo
+`PATCH` - https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos/{todoId}
+
 <details>
   <summary>Expand to show sample Request/Response</summary>
 
@@ -138,6 +146,8 @@ Response:
 </details>
 
 ### `DELETE` - DeleteTodo
+`DELETE` - https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos/{todoId}
+
 <details>
   <summary>Expand to show sample Request/Response</summary>
 
@@ -154,7 +164,9 @@ Response:
 ```
 </details>
 
-### `GET` - GetAttachmentUrl
+### `POST` - GetAttachmentUrl
+`POST` - https://2z79lri4b7.execute-api.us-east-1.amazonaws.com/dev/todos/{todoId}/attachment
+
 <details>
   <summary>Expand to show sample Request/Response</summary>
 
