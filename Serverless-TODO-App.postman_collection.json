@@ -1,0 +1,819 @@
+{
+	"info": {
+		"_postman_id": "0bdf0111-c4c8-4fed-af51-7ef49367d75c",
+		"name": "Serverless-TODO-App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TODOs",
+			"item": [
+				{
+					"name": "Get all todos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/todos",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"todos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all todos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/todos",
+									"protocol": "https",
+									"host": [
+										"{{apiId}}",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"todos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "302"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Feb 2022 02:20:53 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "37c24125-b6e5-47a1-b03a-6311f31212e0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "NnPc2FA7oAMFxAg="
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-620c5f85-73801e81250aec65132c2d38"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 cf907dcd2ed697ac2b18d7b885308ecc.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "MRS52-C1"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "7cFozysKlmACdyMxvcRMv-HrVXLJKtkvz21Cb1jHZU6DP1pbPimEtg=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        {\n            \"todoId\": \"5230ab06-4ebc-4c58-8df2-86e365dc96f0\",\n            \"attachmentUrl\": \"https://sapp-todo-images-dev.s3.amazonaws.com/1bead47d-0ac5-411a-aaef-51dcbd207728\",\n            \"userId\": \"google-oauth2|110875571614653295734\",\n            \"dueDate\": \"2022-02-23\",\n            \"createdAt\": \"2022-02-16T01:33:54.546Z\",\n            \"name\": \"TODO I#1\",\n            \"done\": false\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create todo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Water flowers\",\n\t\"dueDate\": \"2019-06-11\"\n}"
+						},
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/todos",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"todos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create todo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Water flowers\",\n\t\"dueDate\": \"2019-06-11\"\n}"
+								},
+								"url": {
+									"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/todos",
+									"protocol": "https",
+									"host": [
+										"{{apiId}}",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"todos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "224"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Feb 2022 02:21:09 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "a3304ae7-50dc-4619-b9c7-0a55d26e7534"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "NnPfCElxoAMFTcg="
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-620c5f93-30d9fbe55c8d10925f0c438a"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 cf907dcd2ed697ac2b18d7b885308ecc.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "MRS52-C1"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "eONsJBjHYjh01hqaMsMLvOx_njG7VuMbU9ZZa_eZp2A1s9sYUVsZWg=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"userId\": \"google-oauth2|110875571614653295734\",\n        \"todoId\": \"9962b406-a756-4e35-a537-037df04f2d80\",\n        \"createdAt\": \"2022-02-16T02:21:08.011Z\",\n        \"done\": false,\n        \"attachmentUrl\": null,\n        \"name\": \"Water flowers\",\n        \"dueDate\": \"2019-06-11\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update todo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Change the world\",\n\t\"dueDate\": \"2019-12-11\",\n\t\"done\": true\n}"
+						},
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/todos/35dd600f-43c2-4649-903c-615e1586a26f",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"todos",
+								"35dd600f-43c2-4649-903c-615e1586a26f"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update todo",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Change the world\",\n\t\"dueDate\": \"2019-12-11\",\n\t\"done\": true\n}"
+								},
+								"url": {
+									"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/todos/5230ab06-4ebc-4c58-8df2-86e365dc96f0",
+									"protocol": "https",
+									"host": [
+										"{{apiId}}",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"todos",
+										"5230ab06-4ebc-4c58-8df2-86e365dc96f0"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Feb 2022 02:31:28 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "fac90174-1f94-4e0f-9743-d61174efdf29"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "NnQ_vFXdIAMFlOw="
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-620c61fe-756d0e4973f694603bc8699f"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 d6bcfe3fe3996beafaac9532839666c6.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "MRS52-C1"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "75DUDVu2XfMjXBqqZEXA3oeECrwPF9Dp5-8sr0w8fhuqtCPs001wVw=="
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "Delete todo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/todos/9962b406-a756-4e35-a537-037df04f2d80",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"todos",
+								"9962b406-a756-4e35-a537-037df04f2d80"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete todo",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/todos/fe671583-4512-45f6-9475-4265c04362fb",
+									"protocol": "https",
+									"host": [
+										"{{apiId}}",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"todos",
+										"fe671583-4512-45f6-9475-4265c04362fb"
+									]
+								}
+							},
+							"status": "Bad Gateway",
+							"code": 502,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Feb 2022 02:22:07 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "8335dfe4-103a-437f-bb8a-4066778d8c4f"
+								},
+								{
+									"key": "x-amzn-ErrorType",
+									"value": "InternalServerErrorException"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "NnPn-G9kIAMFdCw="
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-620c5fcc-2189a7b71336a6a56e2d2873"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Error from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 cf907dcd2ed697ac2b18d7b885308ecc.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "MRS52-C1"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "oeWJgMsoVhhp7CX3-doS9SoHQyZNEY1IKXQMRDr6R8-tQohfwjp_4Q=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Internal server error\"\n}"
+						},
+						{
+							"name": "Delete todo",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{authToken}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/todos/9962b406-a756-4e35-a537-037df04f2d80",
+									"protocol": "https",
+									"host": [
+										"{{apiId}}",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"todos",
+										"9962b406-a756-4e35-a537-037df04f2d80"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Feb 2022 02:22:25 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "430420a5-5bb3-47a0-bf0e-8768df927ce6"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "NnPrQHByoAMF03w="
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-620c5fe1-676a0c253bfd53a318f1532a"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 cf907dcd2ed697ac2b18d7b885308ecc.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "MRS52-C1"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "az3HsEK9nTXNdf7fW2n7ZEr2nGXNtUWZK6NydKIxuT7iXxsuhV0hZw=="
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						}
+					]
+				},
+				{
+					"name": "Get attachment URL",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/todos/5230ab06-4ebc-4c58-8df2-86e365dc96f0/attachment",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"todos",
+								"5230ab06-4ebc-4c58-8df2-86e365dc96f0",
+								"attachment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get attachment URL",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{authToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/todos/5230ab06-4ebc-4c58-8df2-86e365dc96f0/attachment",
+									"protocol": "https",
+									"host": [
+										"{{apiId}}",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"todos",
+										"5230ab06-4ebc-4c58-8df2-86e365dc96f0",
+										"attachment"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1410"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Feb 2022 02:22:52 GMT"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "b2c459b0-7d81-4efd-8f3c-8f2ff36da117"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "NnPvaEc0IAMFXYQ="
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-620c5ffc-0384517b15223e355547eb94"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 cf907dcd2ed697ac2b18d7b885308ecc.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "MRS52-C1"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "Xs6vBjakpydlx8wjaP87JnWFopJjEcgLAuNKYg3Xj_-xoHFIHRnypA=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"todoId\": \"5230ab06-4ebc-4c58-8df2-86e365dc96f0\",\n    \"attachmentUrl\": \"https://sapp-todo-images-dev.s3.amazonaws.com/1b8d9f3d-55c9-4c0a-a030-ab3046893230?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIA3EYVIQZAC3K2H6G5%2F20220216%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220216T022252Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEGsaCXVzLWVhc3QtMSJGMEQCIHgQjZYGwmFfKEh8oWDskc3s4M2IXc%2F9n%2BZECmpglgn4AiAinO8yohoO0ox%2BqONd9if2GqtSbB5t0MEmolibMyT8yCq3Agiz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDc2NjE1OTM5MDI3MiIMdcB5HAGGMI%2Bob%2BtlKosCMu874A4N87GVqkQWsUdiz6y5lXlHOvStHPlytWakxqMZ8z%2BsHPOPezvtJ12YN1Qt2xR1BuIZ5OJ%2FPTcxYi7RUOhtkdYzxoLPuC1pPeqSMC8Wi0m%2FoiTo9l9oHAFFC2Y%2BHKGZfDUYK0zIDNwQPonEi1DGDvelGCvCs0ijk7J0Eg2dnyMbKeFZK4RK5kdPFcA7cEBmnG0MLAKeW8XidKjOnrq5%2BxiHWMC18AEtggs5fr0C3XVGRVHIkiu3Px%2F%2Fsi%2FQVAbMqXr%2Fj5Z3GplvV3XTv0aKUQTJ%2Fp9RIUFCDVq1S%2BUkOpjtii4iSa45WywluH93Zpvfrt9WvfAN9bPCSP4XCd4kJxdpABIz0f3gMPm9sZAGOpsBA0FUbw%2FrujrDGxT7iu04%2FAPSZViFMfmaLXI5WO7lRI4X7%2FxHkqqVVmOHKzZjs3SEVmVrUCytu26vCB5ls6GbiqGNhGrolWMv2xI4nKhrVtykvnOKUafac1Xn1XKiTbrhi8YthQnvTp5qkdW3dDA%2FTpCQyAjhLurPuoZuSIoYT%2BlYHPNhO7nT8NoKJK1Q9IOdUuczJQmkWeUZmWk%3D&X-Amz-Signature=a7c8ff1a9ba60efd64ca1836a162119156e878987f2a800e17565b73209e75f4&X-Amz-SignedHeaders=host\",\n    \"userId\": \"google-oauth2|110875571614653295734\",\n    \"dueDate\": \"2022-02-23\",\n    \"createdAt\": \"2022-02-16T01:33:54.546Z\",\n    \"name\": \"TODO I#1\",\n    \"done\": false\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiId",
+			"value": ""
+		},
+		{
+			"key": "authToken",
+			"value": ""
+		}
+	]
+}
