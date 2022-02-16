@@ -1,6 +1,7 @@
 org: sasa94s
 app: serverless-todo-app
 service: serverless-todo-app
+frameworkVersion: '^3.2.1'
 
 plugins:
   - serverless-webpack
@@ -30,6 +31,18 @@ provider:
     ATTACHMENT_S3_BUCKET: sapp-todo-images-${self:provider.stage}
     SIGNED_URL_EXPIRATION: 300
     AUTH0_TENANT: dev-uwsqkb3m.us
+
+  apiGateway:
+    request:
+      schemas:
+        create-todo-request:
+          name: CreateTodoRequest
+          schema: ${file(models/create-todo-model.json)}
+          description: "Create a new TODO item"
+        update-todo-request:
+          name: UpdateTodoRequest
+          schema: ${file(models/update-todo-model.json)}
+          description: "Updates an existing TODO item"
 
   logs:
     # Enable API Gateway logs
@@ -71,8 +84,8 @@ functions:
           cors: true
           authorizer: Auth
           request:
-            schema:
-              'application/json': ${file(models/create-todo-model.json)}
+            schemas:
+              application/json: create-todo-request
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -88,8 +101,8 @@ functions:
           cors: true
           authorizer: Auth
           request:
-            schema:
-              'application/json': ${file(models/update-todo-model.json)}
+            schemas:
+              application/json: update-todo-request
     iamRoleStatements:
       - Effect: Allow
         Action:
@@ -150,12 +163,6 @@ resources:
           - AttributeName: createdAt
             AttributeType: S
           - AttributeName: todoId
-            AttributeType: S
-          - AttributeName: done
-            AttributeType: BOOL
-          - AttributeName: dueDate
-            AttributeType: S
-          - AttributeName: attachmentUrl
             AttributeType: S
         KeySchema:
           - AttributeName: userId
