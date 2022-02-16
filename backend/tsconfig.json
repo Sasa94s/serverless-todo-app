@@ -10,6 +10,9 @@
     "target": "es2017",
     "outDir": "lib"
   },
+  "resolve": {
+    "extensions": [".ts", ".js"]
+  },
   "exclude": [
     "node_modules"
   ]

@@ -1,18 +1,16 @@
-import { CustomAuthorizerEvent, CustomAuthorizerResult } from 'aws-lambda'
 import 'source-map-support/register'
 
-import { verify, decode } from 'jsonwebtoken'
-import { createLogger } from '../../utils/logger'
-import Axios from 'axios'
-import { Jwt } from '../../auth/Jwt'
-import { JwtPayload } from '../../auth/JwtPayload'
+import {CustomAuthorizerEvent, CustomAuthorizerResult} from 'aws-lambda'
+
+import {verify, decode} from 'jsonwebtoken'
+import {Jwt} from '../../auth/Jwt'
+import {JwtPayload} from '../../auth/JwtPayload'
+import {JwksClient} from "../../auth/JwksClient";
+import {createLogger} from '../../utils/logger'
 
 const logger = createLogger('auth')
 
-// TODO: Provide a URL that can be used to download a certificate that can be used
-// to verify JWT token signature.
-// To get this URL you need to go to an Auth0 page -> Show Advanced Settings -> Endpoints -> JSON Web Key Set
-const jwksUrl = '...'
+let cachedCertificate: string
 
 export const handler = async (
   event: CustomAuthorizerEvent
@@ -36,7 +34,7 @@ export const handler = async (
       }
     }
   } catch (e) {
-    logger.error('User not authorized', { error: e.message })
+    logger.error('User not authorized', {error: e.message})
 
     return {
       principalId: 'user',
@@ -55,23 +53,69 @@ export const handler = async (
 }
 
 async function verifyToken(authHeader: string): Promise<JwtPayload> {
-  const token = getToken(authHeader)
-  const jwt: Jwt = decode(token, { complete: true }) as Jwt
+  if (!authHeader) {
+    throw new Error('No authentication header')
+  }
+  if (!/^Bearer /i.test(authHeader)) {
+    throw new Error('Invalid authentication header')
+  }
 
-  // TODO: Implement token verification
-  // You should implement it similarly to how it was implemented for the exercise for the lesson 5
-  // You can read more about how to do this here: https://auth0.com/blog/navigating-rs256-and-jwks/
-  return undefined
+  const token = getToken(authHeader)
+  logger.info("Token", {token})
+  const jwt: Jwt = decode(token, {complete: true}) as Jwt
+  logger.info("JWT Token", {jwt})
+
+  if (jwt.header.alg !== 'RS256') {
+    throw new Error("Unsupported JWT algorithm")
+  }
+
+  const cert = await getCertificate()
+  return verify(token, cert, {algorithms: ['RS256']}) as JwtPayload
 }
 
 function getToken(authHeader: string): string {
-  if (!authHeader) throw new Error('No authentication header')
-
-  if (!authHeader.toLowerCase().startsWith('bearer '))
-    throw new Error('Invalid authentication header')
-
   const split = authHeader.split(' ')
-  const token = split[1]
+  if (split.length !== 2) {
+    throw new Error("No authorization token was found")
+  }
 
-  return token
+  return split[1]
+}
+
+async function getCertificate(): Promise<string> {
+  const keys = await new JwksClient().getJwks()
+
+  if (!keys || !keys.length) {
+    throw new Error('No JWKS keys found')
+  }
+
+  const signingKeys = keys.filter(
+    key => key.use === 'sig'
+      && key.kty === 'RSA'
+      && key.alg === 'RS256'
+      && key.n
+      && key.e
+      && key.kid
+      && (key.x5c && key.x5c.length)
+  )
+  if (!signingKeys.length) {
+    throw new Error('No JWKS signing keys found')
+  }
+
+  // XXX: Only handles single signing key
+  const key = signingKeys[0]
+  const pub = key.x5c[0]  // public key
+
+  // Certificate found!
+  cachedCertificate = certToPEM(pub)
+
+  logger.info('Valid certificate found', cachedCertificate)
+
+  return cachedCertificate
+}
+
+function certToPEM(cert: string): string {
+  cert = cert.match(/.{1,64}/g).join('\n')
+  cert = `-----BEGIN CERTIFICATE-----\n${cert}\n-----END CERTIFICATE-----\n`
+  return cert
 }

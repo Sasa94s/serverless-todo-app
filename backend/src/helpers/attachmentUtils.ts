@@ -1,6 +1,46 @@
-import * as AWS from 'aws-sdk'
-import * as AWSXRay from 'aws-xray-sdk'
+import {DocumentClient} from "aws-sdk/clients/dynamodb";
+import {TodoItem} from "../models/TodoItem";
+import {createDynamoDBClient} from "./awsUtils";
+import {createLogger} from "../utils/logger";
 
-const XAWS = AWSXRay.captureAWS(AWS)
+const logger = createLogger('AttachmentUtils')
 
-// TODO: Implement the fileStogare logic
+const TODOS_TABLE = process.env.TODOS_TABLE
+
+export class AttachmentUtils {
+
+  constructor(
+    private readonly client: DocumentClient = createDynamoDBClient(true)
+  ) {
+  }
+
+  async addAttachmentUrl(userId: string, todoId: string, url: string): Promise<TodoItem> {
+    logger.info("Add Attachment URL", {
+      todoId,
+      userId,
+    })
+
+    const updateResult = await this.client
+      .update({
+        TableName: TODOS_TABLE,
+        Key: {
+          userId,
+          todoId,
+        },
+        ConditionExpression: "userId = :userId and todoId = :todoId",
+        ExpressionAttributeNames: {
+          "#urls": "attachmentUrl"
+        },
+        ExpressionAttributeValues: {
+          ":userId": userId,
+          ":todoId": todoId,
+          ":newUrl": url
+        },
+        UpdateExpression: "SET #urls = :newUrl",
+        ReturnValues: "ALL_NEW"
+      })
+      .promise()
+
+    return updateResult.Attributes as TodoItem
+  }
+}
